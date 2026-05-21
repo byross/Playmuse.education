@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "playmuse-education",
+  "compatibility_date": "2026-05-21",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "playmuse-education"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "playmuse.education/*",
+      "zone_name": "playmuse.education"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
