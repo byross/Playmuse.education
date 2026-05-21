@@ -18,7 +18,9 @@
   width: min(48vw, 420px);
   min-width: 220px;
   height: auto;
-  transform: translateY(-4vh);
+  animation: logoFadeIn 900ms ease-out 120ms forwards;
+  opacity: 0;
+  transform: translateY(-2vh) scale(0.985);
 }
 
 .footer {
@@ -29,12 +31,13 @@
   display: flex;
   min-height: clamp(78px, 15vw, 150px);
   align-items: flex-end;
-  justify-content: center;
-  padding: 0 24px 14px;
-  color: #17130f;
+  justify-content: flex-end;
+  padding: 0 clamp(18px, 4vw, 56px) 14px;
+  color: #ffffff;
   font-size: 13px;
   line-height: 1;
-  text-align: center;
+  text-align: right;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 55%);
   background-image: url("/footer_bg.png");
   background-repeat: repeat-x;
   background-position: bottom center;
@@ -53,7 +56,28 @@
 
   .footer {
     min-height: 104px;
+    padding-right: 18px;
     padding-bottom: 12px;
     font-size: 12px;
+  }
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2vh) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-4vh) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+    opacity: 1;
+    transform: translateY(-4vh);
   }
 }
