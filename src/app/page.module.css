@@ -44,6 +44,24 @@
   background-size: auto 100%;
 }
 
+.footer p {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copyrightIcon {
+  display: inline-grid;
+  width: 1.1em;
+  height: 1.1em;
+  place-items: center;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1;
+}
+
 @media (max-width: 600px) {
   .logo {
     width: min(76vw, 320px);

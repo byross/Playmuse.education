@@ -15,7 +15,12 @@ export default function Home() {
         />
       </main>
       <footer className={styles.footer}>
-        <p>Copyright PlayMuse Education</p>
+        <p aria-label="Copyright PlayMuse Education">
+          <span className={styles.copyrightIcon} aria-hidden="true">
+            ©
+          </span>
+          <span>PlayMuse Education</span>
+        </p>
       </footer>
     </div>
   );
