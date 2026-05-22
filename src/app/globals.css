@@ -120,6 +120,18 @@ body {
 }
 
 @layer base {
+  html {
+    cursor: url("/images/mouse/mouse-cursor.png") 0 0, auto;
+  }
+
+  a,
+  button,
+  [role="button"],
+  summary,
+  label {
+    cursor: url("/images/mouse/mouse-cursor.png") 0 0, pointer;
+  }
+
   body {
     min-height: 100dvh;
     margin: 0;

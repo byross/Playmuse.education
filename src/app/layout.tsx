@@ -5,6 +5,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
+import ClickSpark from "@/components/ui/ClickSpark";
 
 // Hand-drawn display face — matches the painted PlayMuse wordmark.
 const gooddog = localFont({
@@ -63,6 +64,7 @@ export default function RootLayout({
           <NavBar />
           <main>{children}</main>
           <Footer />
+          <ClickSpark />
         </LanguageProvider>
       </body>
     </html>
