@@ -40,25 +40,17 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const mapY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const cloudsY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
     <>
       {/* ===================== HERO ===================== */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden pb-36 pt-14 sm:pt-20"
-        style={{ background: "var(--gradient-hero)" }}
+        className="relative overflow-hidden pb-0 pt-14 sm:pt-20"
+        style={{ background: "var(--color-paper)" }}
       >
         <FloatingNotes />
         <Doodles count={8} />
-
-        {/* Soft parallax clouds */}
-        <motion.div style={{ y: cloudsY }} className="pointer-events-none absolute inset-x-0 top-8" aria-hidden>
-          <div className="absolute left-[8%]  h-28 w-56 rounded-full bg-white/80 blur-2xl" />
-          <div className="absolute right-[12%] top-8 h-24 w-44 rounded-full bg-white/70 blur-2xl" />
-          <div className="absolute left-[38%] top-20 h-20 w-64 rounded-full bg-white/60 blur-2xl" />
-        </motion.div>
 
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <Reveal variant="pop">
@@ -165,10 +157,23 @@ export default function Home() {
             />
           </motion.div>
         </motion.div>
+
+        {/* KV yellow wave — matches brand key visual */}
+        <div className="pointer-events-none relative mt-2 w-full" aria-hidden>
+          <Image
+            src="/footer_bg.png"
+            alt=""
+            width={1920}
+            height={220}
+            className="h-auto w-full select-none"
+            priority
+            draggable={false}
+          />
+        </div>
       </section>
 
       {/* ===================== WORLDS (gamified tiles) ===================== */}
-      <WaveSection tone="sky" className="py-20">
+      <WaveSection tone="sky" noWave className="py-20">
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeading kicker="PlayMuse" title={dict.home.worldsTitle} banner />
           <Reveal delay={0.1}>
