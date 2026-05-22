@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 import { IslandCard } from "@/components/ui/IslandCard";
 import { FloatingCharacter } from "@/components/ui/FloatingCharacter";
@@ -33,8 +34,8 @@ export default function TeamPage() {
     <>
       <PageHeader title={t.title} tint="crystal" />
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <div className="flex flex-col gap-10">
+      <WaveSection tone="cream" className="py-16">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6">
           {profiles.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.1}>
               <IslandCard accent={p.accent}>
@@ -54,10 +55,10 @@ export default function TeamPage() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </WaveSection>
 
       {/* Contributors */}
-      <section className="bg-lavender/25 py-16">
+      <WaveSection tone="lavender" className="py-16">
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-semibold text-ink sm:text-4xl">{t.contributorsTitle}</h2>
@@ -82,7 +83,7 @@ export default function TeamPage() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </WaveSection>
     </>
   );
 }

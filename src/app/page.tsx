@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IslandCard } from "@/components/ui/IslandCard";
 import { FloatingCharacter } from "@/components/ui/FloatingCharacter";
 import { FloatingNotes } from "@/components/decor/FloatingNotes";
+import { WaveSection } from "@/components/layout/WaveSection";
 
 const ZONES = [
   { accent: "leaf", key: 0 },
@@ -113,43 +114,38 @@ export default function Home() {
               draggable={false}
             />
           </motion.div>
-
-          <div className="pointer-events-none absolute -top-10 left-2 w-20 sm:left-6 sm:w-28">
-            <FloatingCharacter src="/images/character/Finn.png" alt="Finn" width={200} height={380} delay={0.3} />
-          </div>
-          <div className="pointer-events-none absolute -top-16 right-2 w-20 sm:right-8 sm:w-28">
-            <FloatingCharacter src="/images/character/Skye.png" alt="Skye" width={200} height={380} delay={1.1} duration={7.5} />
-          </div>
         </motion.div>
       </section>
 
       {/* ===================== WORLDS ===================== */}
-      <section className="relative mx-auto max-w-6xl px-6 py-20">
-        <SectionHeading kicker="PlayMuse" title={dict.home.worldsTitle} banner />
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-6 max-w-2xl text-center font-body text-base leading-relaxed text-ink/70">
-            {dict.home.worldsBody}
-          </p>
-        </Reveal>
+      <WaveSection tone="cream" className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionHeading kicker="PlayMuse" title={dict.home.worldsTitle} banner />
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-6 max-w-2xl text-center font-body text-base leading-relaxed text-ink/70">
+              {dict.home.worldsBody}
+            </p>
+          </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {ZONES.map((zone, i) => (
-            <Reveal key={zone.key} delay={i * 0.08}>
-              <IslandCard accent={zone.accent} className="h-full">
-                <h3 className="font-display text-lg font-semibold text-ink">
-                  {dict.building.worlds[zone.key].name}
-                </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-ink/65">
-                  {dict.building.worlds[zone.key].desc}
-                </p>
-              </IslandCard>
-            </Reveal>
-          ))}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {ZONES.map((zone, i) => (
+              <Reveal key={zone.key} delay={i * 0.08}>
+                <IslandCard accent={zone.accent} className="h-full">
+                  <h3 className="font-display text-lg font-semibold text-ink">
+                    {dict.building.worlds[zone.key].name}
+                  </h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-ink/65">
+                    {dict.building.worlds[zone.key].desc}
+                  </p>
+                </IslandCard>
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </section>
+      </WaveSection>
 
       {/* ===================== CAST ===================== */}
-      <section className="relative overflow-hidden bg-sky-soft/30 py-20">
+      <WaveSection tone="sky" className="py-20">
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeading title={dict.home.castTitle} />
           <Reveal delay={0.1}>
@@ -173,30 +169,32 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </WaveSection>
 
       {/* ===================== STATUS + CONTACT ===================== */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Reveal>
-            <IslandCard accent="sand" className="h-full">
-              <h3 className="font-display text-2xl font-semibold text-ink">{dict.home.statusTitle}</h3>
-              <p className="mt-3 font-body leading-relaxed text-ink/70">{dict.home.statusBody}</p>
-            </IslandCard>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <IslandCard accent="coral" className="h-full">
-              <h3 className="font-display text-2xl font-semibold text-ink">{dict.home.contactTitle}</h3>
-              <p className="mt-3 font-body leading-relaxed text-ink/70">{dict.home.contactBody}</p>
-              <div className="mt-5">
-                <PillButton href={`mailto:${dict.common.email}`} variant="sun">
-                  {dict.common.email}
-                </PillButton>
-              </div>
-            </IslandCard>
-          </Reveal>
+      <WaveSection tone="cream" className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <Reveal>
+              <IslandCard accent="sand" className="h-full">
+                <h3 className="font-display text-2xl font-semibold text-ink">{dict.home.statusTitle}</h3>
+                <p className="mt-3 font-body leading-relaxed text-ink/70">{dict.home.statusBody}</p>
+              </IslandCard>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <IslandCard accent="coral" className="h-full">
+                <h3 className="font-display text-2xl font-semibold text-ink">{dict.home.contactTitle}</h3>
+                <p className="mt-3 font-body leading-relaxed text-ink/70">{dict.home.contactBody}</p>
+                <div className="mt-5">
+                  <PillButton href={`mailto:${dict.common.email}`} variant="sun">
+                    {dict.common.email}
+                  </PillButton>
+                </div>
+              </IslandCard>
+            </Reveal>
+          </div>
         </div>
-      </section>
+      </WaveSection>
     </>
   );
 }

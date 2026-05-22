@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 
 type Section = {
@@ -24,8 +25,8 @@ export function LegalPage({ docKey }: { docKey: "privacy" | "terms" | "cookies" 
     <>
       <PageHeader title={doc.title} intro={dict.legal.lastUpdated} tint="sky" />
 
-      <section className="mx-auto max-w-3xl px-6 py-14">
-        <article className="flex flex-col gap-9">
+      <WaveSection tone="cream" className="py-14">
+        <article className="mx-auto flex max-w-3xl flex-col gap-9 px-6">
           {doc.sections.map((section, i) => (
             <Reveal key={i} delay={Math.min(i * 0.04, 0.2)}>
               <h2 className="font-display text-xl font-semibold text-ink sm:text-2xl">{section.h}</h2>
@@ -50,7 +51,7 @@ export function LegalPage({ docKey }: { docKey: "privacy" | "terms" | "cookies" 
             </Reveal>
           ))}
         </article>
-      </section>
+      </WaveSection>
     </>
   );
 }

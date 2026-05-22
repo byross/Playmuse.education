@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection, type Tone } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 import { PillButton } from "@/components/ui/PillButton";
 import { SpeechBanner } from "@/components/ui/SpeechBanner";
@@ -26,14 +27,24 @@ const COLORS = [
   { name: "sky-soft", var: "--color-sky-soft", hex: "#BCDDF0" },
 ];
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({
+  title,
+  tone = "cream",
+  children,
+}: {
+  title: string;
+  tone?: Tone;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-12">
-      <Reveal>
-        <h2 className="mb-7 text-2xl font-semibold text-ink sm:text-3xl">{title}</h2>
-        {children}
-      </Reveal>
-    </section>
+    <WaveSection tone={tone} className="py-12">
+      <div className="mx-auto max-w-5xl px-6">
+        <Reveal>
+          <h2 className="mb-7 text-2xl font-semibold text-ink sm:text-3xl">{title}</h2>
+          {children}
+        </Reveal>
+      </div>
+    </WaveSection>
   );
 }
 
@@ -64,7 +75,7 @@ export default function StyleGuidePage() {
       </Block>
 
       {/* Typography */}
-      <Block title={s.typography}>
+      <Block title={s.typography} tone="sky">
         <div className="flex flex-col gap-4 rounded-[var(--radius-card)] border-[3px] border-ink bg-cream p-7 shadow-[var(--shadow-sticker-sm)]">
           <p className="font-hand text-5xl text-ink">Aa Hand · gooddog · 雅痞-繁 標題</p>
           <p className="font-display text-3xl text-ink/85">Aa Display · Arial Rounded · 圓潤標題</p>
@@ -94,7 +105,7 @@ export default function StyleGuidePage() {
       </Block>
 
       {/* Components */}
-      <Block title={s.components}>
+      <Block title={s.components} tone="sage">
         <div className="flex flex-col gap-8">
           <SpeechBanner>Speech Banner</SpeechBanner>
           <div className="grid gap-5 sm:grid-cols-3">

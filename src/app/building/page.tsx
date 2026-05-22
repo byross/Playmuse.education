@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 import { IslandCard } from "@/components/ui/IslandCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,8 +12,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 const PREVIEWS = [
   "/images/app-preview/PlayMuse_working source_o-01.jpg",
   "/images/app-preview/PlayMuse_working source_o-03.jpg",
-  "/images/app-preview/PlayMuse_working source_o-05.jpg",
-  "/images/app-preview/PlayMuse_working source_o-07.jpg",
 ];
 
 const WORLD_IMG = [
@@ -32,7 +31,8 @@ export default function BuildingPage() {
       <PageHeader title={b.title} tint="sky" />
 
       {/* Intro + status badge */}
-      <section className="mx-auto max-w-4xl px-6 py-14 text-center">
+      <WaveSection tone="cream" className="px-6 py-14 text-center">
+        <div className="mx-auto max-w-4xl">
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-coral px-4 py-1.5 font-display text-sm font-semibold text-ink shadow-[var(--shadow-sticker-sm)]">
             <motion.span
@@ -52,10 +52,11 @@ export default function BuildingPage() {
         <Reveal delay={0.24}>
           <p className="mx-auto mt-4 max-w-2xl font-body leading-relaxed text-ink/65">{b.body}</p>
         </Reveal>
-      </section>
+        </div>
+      </WaveSection>
 
       {/* Sound worlds */}
-      <section className="bg-sky-soft/30 py-16">
+      <WaveSection tone="sky" className="py-16">
         <div className="mx-auto max-w-6xl px-6">
           <SectionHeading title={b.worldsTitle} banner />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -76,10 +77,11 @@ export default function BuildingPage() {
             ))}
           </div>
         </div>
-      </section>
+      </WaveSection>
 
       {/* App preview */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <WaveSection tone="cream" className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
         <SectionHeading kicker="Sneak peek" title={b.previewTitle} />
         <Reveal delay={0.1}>
           <p className="mx-auto mt-5 max-w-2xl text-center font-body leading-relaxed text-ink/70">{b.previewBody}</p>
@@ -108,7 +110,8 @@ export default function BuildingPage() {
             {b.status}
           </p>
         </Reveal>
-      </section>
+        </div>
+      </WaveSection>
     </>
   );
 }

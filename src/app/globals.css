@@ -30,6 +30,13 @@
   --color-sky-soft: #bcddf0;
   --color-cream: #fff6e3;
 
+  /* Light section bands (used by wave-separated sections) */
+  --color-band-sky: #e7f3fb;
+  --color-band-sage: #eef4e0;
+  --color-band-sun: #fdf1cb;
+  --color-band-rose: #fbe9ee;
+  --color-band-lavender: #f1ecf9;
+
   /* Typography (CSS vars are injected by next/font in layout.tsx) */
   --font-display: var(--font-arial-rounded), var(--font-yapi), system-ui, sans-serif;
   --font-hand: var(--font-gooddog), var(--font-yapi), system-ui, sans-serif;

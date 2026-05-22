@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 import { IslandCard } from "@/components/ui/IslandCard";
 import { FloatingCharacter } from "@/components/ui/FloatingCharacter";
@@ -15,8 +16,8 @@ export default function AboutPage() {
       <PageHeader title={a.title} tint="leaf" />
 
       {/* Mission */}
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <div className="grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
+      <WaveSection tone="cream" className="py-16">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <h2 className="text-3xl font-semibold text-ink sm:text-4xl">{a.missionTitle}</h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-ink/75">{a.missionBody}</p>
@@ -25,10 +26,10 @@ export default function AboutPage() {
             <FloatingCharacter src="/images/character/Lumi.png" alt="Lumi" width={300} height={560} />
           </Reveal>
         </div>
-      </section>
+      </WaveSection>
 
       {/* Approach */}
-      <section className="bg-sage/25 py-16">
+      <WaveSection tone="sage" className="py-16">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <h2 className="text-center text-3xl font-semibold text-ink sm:text-4xl">{a.approachTitle}</h2>
@@ -49,21 +50,23 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </WaveSection>
 
       {/* Background */}
-      <section className="mx-auto max-w-3xl px-6 py-16">
-        <Reveal>
-          <h2 className="text-3xl font-semibold text-ink sm:text-4xl">{a.backgroundTitle}</h2>
-        </Reveal>
-        <div className="mt-6 flex flex-col gap-5">
-          {a.backgroundBody.map((p, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <p className="font-body text-lg leading-relaxed text-ink/75">{p}</p>
-            </Reveal>
-          ))}
+      <WaveSection tone="cream" className="py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <Reveal>
+            <h2 className="text-3xl font-semibold text-ink sm:text-4xl">{a.backgroundTitle}</h2>
+          </Reveal>
+          <div className="mt-6 flex flex-col gap-5">
+            {a.backgroundBody.map((p, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <p className="font-body text-lg leading-relaxed text-ink/75">{p}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </section>
+      </WaveSection>
     </>
   );
 }

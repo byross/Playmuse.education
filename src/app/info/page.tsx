@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WaveSection } from "@/components/layout/WaveSection";
 import { Reveal } from "@/components/ui/Reveal";
 import { IslandCard } from "@/components/ui/IslandCard";
 import { PillButton } from "@/components/ui/PillButton";
@@ -39,7 +40,8 @@ export default function InfoPage() {
     <>
       <PageHeader title={info.title} tint="sand" />
 
-      <section className="mx-auto max-w-3xl px-6 py-16">
+      <WaveSection tone="sky" className="py-16">
+        <div className="mx-auto max-w-3xl px-6">
         <Reveal>
           <IslandCard accent="sand">
             <dl className="divide-y-2 divide-ink/10">
@@ -62,7 +64,8 @@ export default function InfoPage() {
             </PillButton>
           </div>
         </Reveal>
-      </section>
+        </div>
+      </WaveSection>
     </>
   );
 }
