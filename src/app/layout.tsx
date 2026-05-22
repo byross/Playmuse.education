@@ -3,6 +3,7 @@ import { Cause, Chiron_GoRound_TC } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { SoundProvider } from "@/components/audio/SoundProvider";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import ClickSpark from "@/components/ui/ClickSpark";
@@ -71,11 +72,13 @@ export default function RootLayout({
     >
       <body>
         <LanguageProvider>
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
-          <MusicNoteCursor />
-          <ClickSpark />
+          <SoundProvider>
+            <NavBar />
+            <main>{children}</main>
+            <Footer />
+            <MusicNoteCursor />
+            <ClickSpark sparkCount={12} sparkRadius={26} />
+          </SoundProvider>
         </LanguageProvider>
       </body>
     </html>

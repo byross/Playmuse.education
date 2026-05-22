@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* ============================================================
-   PlayMuse Design System — tokens derived from the Key Visual
+   PlayMuse Design System — Candy Pop Edition 🍭
+   Tokens derived from the Key Visual, boosted for kids!
    ============================================================ */
 @theme {
   /* Brand */
@@ -12,32 +13,41 @@
   --color-paper: #fcf3e5;
   --color-paper-deep: #f4e6cf;
 
-  /* Zone / world colors (the five sound-wave islands) */
-  --color-leaf: #7fb069;
-  --color-leaf-deep: #4f7c3f;
-  --color-sky: #5bc4e8;
-  --color-sky-deep: #1e6fa8;
+  /* Zone / world colors */
+  --color-leaf: #5aad40;
+  --color-leaf-deep: #3a7a28;
+  --color-sky: #28b4e0;
+  --color-sky-deep: #1060a0;
   --color-sand: #e8b84b;
-  --color-coral: #e87da0;
-  --color-coral-deep: #c25478;
-  --color-crystal: #9b7bc4;
-  --color-crystal-deep: #6c4f99;
+  --color-coral: #f05590;
+  --color-coral-deep: #c03870;
+  --color-crystal: #8b60d0;
+  --color-crystal-deep: #5c3898;
 
-  /* Soft watercolor pastels (characters / section washes) */
-  --color-sage: #c5d6a0;
-  --color-rose: #e8b5be;
-  --color-lavender: #c9b8e0;
-  --color-sky-soft: #bcddf0;
+  /* Candy pop accent colors */
+  --color-mint: #10c896;
+  --color-hotpink: #ff3878;
+  --color-tangerine: #ff7220;
+  --color-grape: #7c3aed;
+  --color-lemon: #fef048;
+
+  /* Soft watercolor pastels */
+  --color-sage: #b0cc80;
+  --color-rose: #f0a8b8;
+  --color-lavender: #c0a8e8;
+  --color-sky-soft: #a8d8f0;
   --color-cream: #fff6e3;
 
-  /* Light section bands (used by wave-separated sections) */
-  --color-band-sky: #e7f3fb;
-  --color-band-sage: #eef4e0;
-  --color-band-sun: #fdf1cb;
-  --color-band-rose: #fbe9ee;
-  --color-band-lavender: #f1ecf9;
+  /* Section band colors — vivid candy upgrade */
+  --color-band-sky: #c0e8f8;
+  --color-band-sage: #c8ecb0;
+  --color-band-sun: #fce870;
+  --color-band-rose: #f8c0d0;
+  --color-band-lavender: #d8c8f8;
+  --color-band-coral: #ffc8d8;
+  --color-band-mint: #a0f0d0;
 
-  /* Typography (CSS vars are injected by next/font in layout.tsx) */
+  /* Typography */
   --font-display: var(--font-arial-rounded), var(--font-yapi), system-ui, sans-serif;
   --font-hand: var(--font-gooddog), var(--font-yapi), system-ui, sans-serif;
   --font-body: var(--font-cause), var(--font-chiron), system-ui, sans-serif;
@@ -49,6 +59,7 @@
   /* Shadows */
   --shadow-sticker: 4px 4px 0 var(--color-ink);
   --shadow-sticker-sm: 2px 2px 0 var(--color-ink);
+  --shadow-sticker-lg: 7px 7px 0 var(--color-ink);
   --shadow-soft: 0 18px 40px -18px rgba(23, 19, 15, 0.35);
 
   /* Easing */
@@ -61,40 +72,63 @@
   --animate-drift: drift 7s linear infinite;
   --animate-wave: wave 8s ease-in-out infinite;
   --animate-spin-slow: spin 16s linear infinite;
+  --animate-wiggle: wiggle 0.6s ease-in-out;
+  --animate-wiggle-loop: wiggle 2s ease-in-out infinite;
+  --animate-pop: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  --animate-twinkle: twinkle 2s ease-in-out infinite;
+  --animate-jelly: jelly 0.5s ease-in-out;
+  --animate-bounce-in: bounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(-1.5deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-1.5deg); }
 }
 
 @keyframes drift {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120px) translateX(24px) rotate(20deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-120px) translateX(24px) rotate(20deg); opacity: 0; }
 }
 
 @keyframes wave {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-2.5%);
-  }
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-2.5%); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(8deg); }
+  60% { transform: rotate(-4deg); }
+  80% { transform: rotate(4deg); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.18); }
+  80% { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(0.7) rotate(0deg); opacity: 0.4; }
+  50% { transform: scale(1.3) rotate(25deg); opacity: 1; }
+}
+
+@keyframes jelly {
+  0% { transform: scaleX(1) scaleY(1); }
+  30% { transform: scaleX(1.2) scaleY(0.8); }
+  60% { transform: scaleX(0.9) scaleY(1.12); }
+  80% { transform: scaleX(1.05) scaleY(0.95); }
+  100% { transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0) translateY(30px); opacity: 0; }
+  65% { transform: scale(1.1) translateY(-6px); opacity: 1; }
+  80% { transform: scale(0.95) translateY(3px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 /* ============================================================
@@ -103,18 +137,18 @@
 :root {
   --background: var(--color-paper);
   --foreground: var(--color-ink);
+
+  /* Gradients — must live in :root, not @theme (Tailwind v4 restriction) */
+  --gradient-rainbow: linear-gradient(90deg, #ff3878 0%, #ff7220 20%, #f7c600 38%, #10c896 56%, #28b4e0 76%, #8b60d0 100%);
+  --gradient-candy: linear-gradient(135deg, #f7c600, #f05590);
+  --gradient-hero: linear-gradient(160deg, #fff6e3 0%, #c0e8f8 45%, #fce870 100%);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -124,11 +158,7 @@ body {
     cursor: url("/images/mouse/mouse-cursor.png") 0 0, auto;
   }
 
-  a,
-  button,
-  [role="button"],
-  summary,
-  label {
+  a, button, [role="button"], summary, label {
     cursor: url("/images/mouse/mouse-cursor.png") 0 0, pointer;
   }
 
@@ -142,10 +172,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
     line-height: 1.05;
@@ -158,9 +185,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -168,10 +193,40 @@ body {
   }
 }
 
-/* Reusable ink-outline utility (the signature thick black stroke) */
+/* ============================================================
+   Custom utilities
+   ============================================================ */
 @utility ink-outline {
   border: 3px solid var(--color-ink);
 }
+
 @utility ink-outline-2 {
   border: 2px solid var(--color-ink);
+}
+
+@utility rainbow-text {
+  background: var(--gradient-rainbow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility candy-text {
+  background: var(--gradient-candy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility sticker-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-sticker-sm);
 }
