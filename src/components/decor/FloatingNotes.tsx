@@ -22,7 +22,7 @@ export function FloatingNotes() {
           animate={{ y: [0, -22, 0], rotate: [0, 12, -6, 0], opacity: [0.55, 0.9, 0.55] }}
           transition={{ duration: n.dur, delay: n.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image src={n.src} alt="" width={120} height={120} className="h-auto w-full" />
+          <Image src={n.src} alt="" width={120} height={120} className="h-auto w-full rotate-90" />
         </motion.div>
       ))}
     </div>
