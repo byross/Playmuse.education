@@ -141,19 +141,18 @@ export default function Home() {
           </motion.p>
         </div>
 
-        {/* KV yellow wave — brand bottom boundary */}
-        <div className="pointer-events-none relative w-full" aria-hidden>
-          <Image
-            src="/footer_animation.gif"
-            alt=""
-            width={3279}
-            height={718}
-            unoptimized
-            className="h-auto w-full select-none"
-            priority
-            draggable={false}
-          />
-        </div>
+        {/* KV yellow wave — repeat-x tile at natural proportions, no full-width stretch */}
+        <div
+          aria-hidden
+          className="pointer-events-none w-full"
+          style={{
+            height: 160,
+            backgroundImage: "url('/footer_animation.gif')",
+            backgroundRepeat: "repeat-x",
+            backgroundSize: "auto 100%",
+            backgroundPosition: "bottom left",
+          }}
+        />
       </section>
 
       {/* ===================== WORLDS (gamified tiles) ===================== */}
