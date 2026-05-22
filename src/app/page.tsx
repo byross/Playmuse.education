@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { useSound } from "@/components/audio/SoundProvider";
 import { PillButton } from "@/components/ui/PillButton";
@@ -37,22 +36,21 @@ const CAST_BADGES = ["bg-sun", "bg-sky", "bg-coral", "bg-leaf", "bg-crystal"];
 export default function Home() {
   const { dict } = useLanguage();
   const { playSound } = useSound();
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const mapY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
     <>
       {/* ===================== HERO ===================== */}
       <section
-        ref={heroRef}
-        className="relative overflow-hidden pb-0 pt-14 sm:pt-20"
+        className="relative overflow-hidden pb-0"
         style={{ background: "var(--color-paper)" }}
       >
         <FloatingNotes />
-        <Doodles count={8} />
+        <Doodles count={7} />
 
-        <div className="relative mx-auto max-w-5xl px-6 text-center">
+        {/* Centred hero layout */}
+        <div className="relative mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center sm:pt-32">
+
+          {/* Kicker badge */}
           <Reveal variant="pop">
             <span className="inline-flex items-center gap-2 rounded-full border-[2.5px] border-ink bg-sun px-5 py-1.5 font-display text-xs font-bold uppercase tracking-[0.25em] text-ink shadow-[var(--shadow-sticker-sm)]">
               <motion.span
@@ -67,39 +65,36 @@ export default function Home() {
             </span>
           </Reveal>
 
-          <Reveal delay={0.08} variant="pop">
-            <h1 className="mx-auto mt-5 max-w-3xl font-hand text-5xl font-normal leading-[1.1] text-ink sm:text-7xl">
-              {dict.home.title}{" "}
-              <span className="relative inline-block">
-                <span className="candy-text">{dict.home.titleAccent}</span>
-                <motion.svg
-                  viewBox="0 0 300 16"
-                  preserveAspectRatio="none"
-                  className="absolute -bottom-1 left-0 h-3 w-full"
-                  fill="none"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.2, delay: 0.7 }}
-                >
-                  <motion.path
-                    d="M4 10 C 80 2, 220 2, 296 9"
-                    stroke="#f05590"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                  />
-                </motion.svg>
-              </span>
-            </h1>
+          {/* ——— Logo — hero centrepiece ——— */}
+          <Reveal delay={0.1} variant="pop">
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.04, rotate: -1 }}
+              className="mt-8 cursor-default md:mt-10"
+            >
+              <Image
+                src="/playmuse_logo.png"
+                alt="PlayMuse Education"
+                width={817}
+                height={578}
+                priority
+                className="h-auto w-[240px] select-none drop-shadow-[0_16px_48px_rgba(247,198,0,0.45)] sm:w-[360px] md:w-[500px] lg:w-[580px]"
+                draggable={false}
+              />
+            </motion.div>
           </Reveal>
 
-          <Reveal delay={0.16}>
-            <p className="mx-auto mt-7 max-w-2xl font-body text-base leading-relaxed text-ink/75 sm:text-lg">
+          {/* Tagline */}
+          <Reveal delay={0.2}>
+            <p className="mx-auto mt-7 max-w-xl font-body text-base leading-relaxed text-ink/70 sm:text-lg">
               {dict.home.lead}
             </p>
           </Reveal>
 
-          <Reveal delay={0.24} variant="pop">
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          {/* CTA row */}
+          <Reveal delay={0.3} variant="pop">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <PillButton href="/building" variant="sun" size="lg">
                 🎵 {dict.home.ctaPrimary}
               </PillButton>
@@ -109,11 +104,11 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* Tappable interactive note — plays chime */}
+          {/* Tappable note — plays chime */}
           <motion.button
             aria-label="Play a note"
             onClick={() => playSound("chime")}
-            className="absolute right-[6%] top-[8%] cursor-pointer rounded-full border-[2px] border-ink bg-sun/80 p-2 shadow-[var(--shadow-sticker-sm)]"
+            className="absolute right-[6%] top-[12%] cursor-pointer rounded-full border-[2px] border-ink bg-sun/80 p-2 shadow-[var(--shadow-sticker-sm)]"
             animate={{ y: [0, -12, 0], rotate: [0, 15, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileTap={{ scale: 1.5, rotate: 30 }}
@@ -128,38 +123,52 @@ export default function Home() {
               draggable={false}
             />
           </motion.button>
-
-          {/* Tap-me label */}
           <motion.p
-            className="absolute right-[2%] top-[18%] font-display text-[10px] font-bold text-ink/50"
+            className="absolute right-[2%] top-[22%] font-display text-[10px] font-bold text-ink/50"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2.5, repeat: Infinity }}
             aria-hidden
           >
             tap me! 🎵
           </motion.p>
-        </div>
 
-        {/* Map + peeking characters */}
-        <motion.div style={{ y: mapY }} className="relative mx-auto mt-12 max-w-6xl px-4">
+          {/* Left accent character — peeking from bottom-left */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-2 left-0 hidden w-28 md:block lg:w-36"
+            animate={{ y: [0, -8, 0], rotate: [0, 2, -2, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden
           >
             <Image
-              src="/images/map/full_map.png"
-              alt="The five sound-wave islands of PlayMuse"
-              width={3508}
-              height={960}
-              priority
-              className="h-auto w-full select-none drop-shadow-[0_20px_40px_rgba(23,19,15,0.18)]"
+              src="/images/character/Lumi.png"
+              alt=""
+              width={200}
+              height={380}
+              className="h-auto w-full select-none"
               draggable={false}
             />
           </motion.div>
-        </motion.div>
 
-        {/* KV yellow wave — matches brand key visual */}
-        <div className="pointer-events-none relative mt-2 w-full" aria-hidden>
+          {/* Right accent character — peeking from bottom-right */}
+          <motion.div
+            className="absolute -bottom-2 right-0 hidden w-28 md:block lg:w-36"
+            animate={{ y: [0, -10, 0], rotate: [0, -2, 2, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            aria-hidden
+          >
+            <Image
+              src="/images/character/Rowan.png"
+              alt=""
+              width={200}
+              height={380}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </motion.div>
+        </div>
+
+        {/* KV yellow wave — brand bottom boundary */}
+        <div className="pointer-events-none relative w-full" aria-hidden>
           <Image
             src="/footer_bg.png"
             alt=""
@@ -213,12 +222,9 @@ export default function Home() {
             {CAST.map((c, i) => (
               <Reveal key={c.name} delay={i * 0.1} variant="pop">
                 <div className="flex w-28 flex-col items-center gap-1 sm:w-36">
-                  {/* Speech bubble */}
                   <SpeechBubble color={c.color as "sun" | "sky" | "coral" | "leaf" | "crystal"} tail="bottom">
                     {c.quote}
                   </SpeechBubble>
-
-                  {/* Character */}
                   <div className="mt-1 w-full">
                     <FloatingCharacter
                       src={c.src}
@@ -229,8 +235,6 @@ export default function Home() {
                       duration={6 + i * 0.5}
                     />
                   </div>
-
-                  {/* Sticker name badge */}
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: -3 }}
                     transition={{ type: "spring", stiffness: 300, damping: 12 }}
