@@ -13,8 +13,6 @@ import { Doodles } from "@/components/decor/Doodles";
 const PREVIEWS = [
   "/images/app-preview/PlayMuse_working source_o-01.jpg",
   "/images/app-preview/PlayMuse_working source_o-03.jpg",
-  "/images/app-preview/PlayMuse_working source_o-04.jpg",
-  "/images/app-preview/PlayMuse_working source_o-05.jpg",
 ];
 
 const WORLD_IMGS = [
@@ -94,7 +92,7 @@ export default function BuildingPage() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
             {PREVIEWS.map((src, i) => (
               <Reveal key={src} delay={i * 0.08} variant="pop">
                 <motion.div

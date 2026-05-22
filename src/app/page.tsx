@@ -48,7 +48,7 @@ export default function Home() {
         <Doodles count={7} />
 
         {/* Centred hero layout */}
-        <div className="relative mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center sm:pt-32">
+        <div className="relative mx-auto flex min-h-[85vh] max-w-4xl flex-col items-center justify-center px-6 pb-12 pt-24 text-center sm:pt-32">
 
           {/* Kicker badge */}
           <Reveal variant="pop">
@@ -65,13 +65,12 @@ export default function Home() {
             </span>
           </Reveal>
 
-          {/* ——— Logo — hero centrepiece ——— */}
+          {/* Logo — visual centrepiece */}
           <Reveal delay={0.1} variant="pop">
             <motion.div
-              animate={{ y: [0, -12, 0] }}
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.04, rotate: -1 }}
-              className="mt-8 cursor-default md:mt-10"
+              className="mt-8"
             >
               <Image
                 src="/playmuse_logo.png"
@@ -79,21 +78,29 @@ export default function Home() {
                 width={817}
                 height={578}
                 priority
-                className="h-auto w-[240px] select-none drop-shadow-[0_16px_48px_rgba(247,198,0,0.45)] sm:w-[360px] md:w-[500px] lg:w-[580px]"
+                className="h-auto w-[220px] select-none drop-shadow-[0_12px_40px_rgba(247,198,0,0.4)] sm:w-[320px] md:w-[440px] lg:w-[520px]"
                 draggable={false}
               />
             </motion.div>
           </Reveal>
 
-          {/* Tagline */}
-          <Reveal delay={0.2}>
-            <p className="mx-auto mt-7 max-w-xl font-body text-base leading-relaxed text-ink/70 sm:text-lg">
+          {/* Tagline — h1 from doc */}
+          <Reveal delay={0.18} variant="pop">
+            <h1 className="mt-6 max-w-2xl font-hand text-2xl font-normal leading-snug text-ink sm:text-3xl md:text-4xl">
+              {dict.home.title}{" "}
+              <span className="candy-text">{dict.home.titleAccent}</span>
+            </h1>
+          </Reveal>
+
+          {/* Lead paragraph — company description from doc */}
+          <Reveal delay={0.26}>
+            <p className="mx-auto mt-5 max-w-xl font-body text-sm leading-relaxed text-ink/65 sm:text-base">
               {dict.home.lead}
             </p>
           </Reveal>
 
           {/* CTA row */}
-          <Reveal delay={0.3} variant="pop">
+          <Reveal delay={0.34} variant="pop">
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <PillButton href="/building" variant="sun" size="lg">
                 🎵 {dict.home.ctaPrimary}
@@ -108,7 +115,7 @@ export default function Home() {
           <motion.button
             aria-label="Play a note"
             onClick={() => playSound("chime")}
-            className="absolute right-[6%] top-[12%] cursor-pointer rounded-full border-[2px] border-ink bg-sun/80 p-2 shadow-[var(--shadow-sticker-sm)]"
+            className="absolute right-[6%] top-[10%] cursor-pointer rounded-full border-[2px] border-ink bg-sun/80 p-2 shadow-[var(--shadow-sticker-sm)]"
             animate={{ y: [0, -12, 0], rotate: [0, 15, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileTap={{ scale: 1.5, rotate: 30 }}
@@ -124,47 +131,13 @@ export default function Home() {
             />
           </motion.button>
           <motion.p
-            className="absolute right-[2%] top-[22%] font-display text-[10px] font-bold text-ink/50"
+            className="absolute right-[2%] top-[20%] font-display text-[10px] font-bold text-ink/50"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2.5, repeat: Infinity }}
             aria-hidden
           >
             tap me! 🎵
           </motion.p>
-
-          {/* Left accent character — peeking from bottom-left */}
-          <motion.div
-            className="absolute -bottom-2 left-0 hidden w-28 md:block lg:w-36"
-            animate={{ y: [0, -8, 0], rotate: [0, 2, -2, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            aria-hidden
-          >
-            <Image
-              src="/images/character/Lumi.png"
-              alt=""
-              width={200}
-              height={380}
-              className="h-auto w-full select-none"
-              draggable={false}
-            />
-          </motion.div>
-
-          {/* Right accent character — peeking from bottom-right */}
-          <motion.div
-            className="absolute -bottom-2 right-0 hidden w-28 md:block lg:w-36"
-            animate={{ y: [0, -10, 0], rotate: [0, -2, 2, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            aria-hidden
-          >
-            <Image
-              src="/images/character/Rowan.png"
-              alt=""
-              width={200}
-              height={380}
-              className="h-auto w-full select-none"
-              draggable={false}
-            />
-          </motion.div>
         </div>
 
         {/* KV yellow wave — brand bottom boundary */}
