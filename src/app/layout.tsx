@@ -48,6 +48,15 @@ export const metadata: Metadata = {
   title: "PlayMuse Education — Thoughtful, joyful digital learning",
   description:
     "PlayMuse Education Limited develops interactive learning experiences with a focus on playful music education for children and families.",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default function RootLayout({
