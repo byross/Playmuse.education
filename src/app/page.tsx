@@ -73,11 +73,12 @@ export default function Home() {
               className="mt-8"
             >
               <Image
-                src="/playmuse_logo.png"
+                src="/logo_animation.gif"
                 alt="PlayMuse Education"
-                width={817}
-                height={578}
+                width={1578}
+                height={1217}
                 priority
+                unoptimized
                 className="h-auto w-[220px] select-none drop-shadow-[0_12px_40px_rgba(247,198,0,0.4)] sm:w-[320px] md:w-[440px] lg:w-[520px]"
                 draggable={false}
               />
@@ -143,10 +144,11 @@ export default function Home() {
         {/* KV yellow wave — brand bottom boundary */}
         <div className="pointer-events-none relative w-full" aria-hidden>
           <Image
-            src="/footer_bg.png"
+            src="/footer_animation.gif"
             alt=""
-            width={1920}
-            height={220}
+            width={3279}
+            height={718}
+            unoptimized
             className="h-auto w-full select-none"
             priority
             draggable={false}

@@ -38,19 +38,23 @@ export function NavBar() {
           <Link href="/" aria-label="PlayMuse Education — Home" className="shrink-0">
             <motion.span
               className="inline-flex"
-              whileHover={{ rotate: -4, scale: 1.06 }}
+              whileHover={{
+                rotate: -4,
+                scale: 1.06,
+                transition: { type: "spring", stiffness: 300, damping: 10 },
+              }}
               animate={{ rotate: [0, -2, 2, 0] }}
               transition={{
                 rotate: { duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 },
-                whileHover: { type: "spring", stiffness: 300, damping: 10 },
               }}
             >
               <Image
-                src="/playmuse_logo.png"
+                src="/logo_animation.gif"
                 alt="PlayMuse"
-                width={817}
-                height={578}
+                width={1578}
+                height={1217}
                 priority
+                unoptimized
                 className="h-10 w-auto sm:h-12"
               />
             </motion.span>

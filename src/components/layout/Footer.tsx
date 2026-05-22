@@ -50,10 +50,11 @@ export function Footer() {
                 className="w-fit"
               >
                 <Image
-                  src="/playmuse_logo.png"
+                  src="/logo_animation.gif"
                   alt="PlayMuse Education"
-                  width={817}
-                  height={578}
+                  width={1578}
+                  height={1217}
+                  unoptimized
                   className="h-14 w-auto"
                 />
               </motion.div>
